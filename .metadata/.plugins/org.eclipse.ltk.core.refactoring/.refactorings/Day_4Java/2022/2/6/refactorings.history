@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;GreatestOfArrayElements&apos; to &apos;Largest_SmallestOfArrayElements&apos;&#x0D;&#x0A;- Original project: &apos;Day_4Java&apos;&#x0D;&#x0A;- Original element: &apos;GreatestOfArrayElements&apos;&#x0D;&#x0A;- Renamed element: &apos;Largest_SmallestOfArrayElements&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;GreatestOfArrayElements&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{GreatestOfArrayElements.java[GreatestOfArrayElements" matchStrategy="1" name="Largest_SmallestOfArrayElements" qualified="false" references="true" similarDeclarations="false" stamp="1643694022240" textual="false" version="1.0"/>
+</session>
