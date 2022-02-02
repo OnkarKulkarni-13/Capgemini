@@ -1,0 +1,24 @@
+package com.Capg_Day5;
+
+public class ReverseTheString {
+	public static void main(String[] args) {
+		String str = "Onkar Kulkarni";
+		int len = str.length();
+		//str = str.reverse();     this is not valid.
+		System.out.print("Printing the original string :- "+str+"\n");
+		
+		StringBuffer str1 = new StringBuffer(str);  //Buffer reader this is mutable but original string is not 
+		
+		System.out.print("Printing the reverse string :- ");
+		System.out.println(str1.reverse());        //Using the reverse method,you can't use the reverse method on immutable String
+		
+		//System.out.println(str.charAt[0]);
+	
+		
+		/*for(int i=0;i<len/2;i++) {
+			
+		}
+		*/
+	}
+
+}

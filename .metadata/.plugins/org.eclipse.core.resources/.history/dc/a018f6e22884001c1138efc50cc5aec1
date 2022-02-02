@@ -1,0 +1,22 @@
+package com.Capg_Day5;
+import java.util.Scanner;
+
+public class PalindromeOrNot {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your string:- ");
+		String str =  sc.nextLine();
+		
+		StringBuffer str1 = new StringBuffer(str);
+		str1.reverse();
+		
+		if(str.equals(str1)) {
+			System.out.println("Palindrome String");
+			
+		}
+		else {
+			System.out.println("Not a Palindrome String");
+		}
+	}
+
+}

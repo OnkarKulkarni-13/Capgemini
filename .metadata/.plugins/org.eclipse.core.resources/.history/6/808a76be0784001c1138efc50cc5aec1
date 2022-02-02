@@ -1,0 +1,19 @@
+package com.Capg_Day5;
+
+public class FloatWrapper {
+	public static void main(String[] args) {
+		Float f = new Float(12.0);
+		System.out.println("Value of wrapped float object f:- " + f);
+
+		// Converting the float value into int:-
+		int i = f.intValue();
+		System.out.println("int value of Float object, f : " + i);
+		System.out.println("Size of int i:- "+(Integer.SIZE/8));
+
+		// Converting float the float value into long:-
+		long l = f.longValue();
+		System.out.println("int value of Float object, f : " + l);
+		System.out.println("Size of int i:- "+(Long.SIZE/8));
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.Capg_Day5;
+import java.util.Scanner;
+public class CountNumberOFWords {
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in)
+		
+		
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.Capg_Day5;
+
+public class ReverseTheString {
+	public static void main(String[] args) {
+		String str = "Onkar Kulkarni";
+		int len = str.length();
+		// str = str.reverse(); this is not valid.
+		System.out.print("Printing the original string :- " + str + "\n");
+
+		// Method-1 :->
+		StringBuffer str1 = new StringBuffer(str); // Buffer reader this is mutable but original string is not
+
+		System.out.print("Printing the reverse string :- ");
+		System.out.println(str1.reverse()); // Using the reverse method,you can't use the reverse method on immutable
+											// String
+
+		// Method-2 :->
+		System.out.println("-------------------------------------------------------------------");
+		// Without using the reverse() method :-
+		String s1 = "Vyankatesh", nstr = "";
+		char ch;
+
+		System.out.print("Original word: ");
+		System.out.println(s1); // Example word
+
+		for (int i = 0; i < s1.length(); i++) {
+			ch = s1.charAt(i); // extracts each character
+			nstr = ch + nstr; // adds each character in front of the existing string
+		}
+		System.out.println("Reversed word: " + nstr);
+
+		// Method-3 :->
+		System.out.println("-------------------------------------------------------------------");
+		String input = "Reverse String";
+		System.out.print("Original String:- "+input);
+
+		// convert String to character array
+		// by using toCharArray
+		char[] try1 = input.toCharArray();
+
+		for (int i = try1.length - 1; i >= 0; i--)
+			System.out.print(try1[i]);
+
+	}
+}
