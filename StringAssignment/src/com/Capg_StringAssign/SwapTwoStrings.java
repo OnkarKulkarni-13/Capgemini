@@ -1,8 +1,7 @@
-package com.Capg_Day5;
-//Write a Program to swap two Strings without 3rd variable:-
+package com.Capg_StringAssign;
+// 1. Write a program to swap two strings without using the third variable.
 
-import java.lang.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class SwapTwoStrings {
 	public static void main(String[] args) {
