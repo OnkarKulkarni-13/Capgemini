@@ -7,18 +7,28 @@ public class RemoveCharacter {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter your String:- ");
-		StringBuffer str1 = new StringBuffer(sc.nextLine());
+		String str = sc.nextLine();
+		//System.out.println("your entered string:- "+str);
+		
+		StringBuffer str1 = new StringBuffer(str);
+		System.out.println("your entered string:- "+str1);
+		
 
 		System.out.print("Enter char which you want to remove:- ");
 		char ch = sc.nextLine().charAt(0);
-
+        
+		StringBuffer newStr=new StringBuffer();
+		
 		for (int i = 0; i < str1.length(); i++) {
-			if (str1.charAt(i) == ch) {
-				str1.deleteCharAt(i);
+			//System.out.print(str1.charAt(i)+"\n");
+			
+			if (str1.charAt(i) != ch) {
+				newStr.append(str1.charAt(i));
 			}
 
 		}
-		System.out.print("String after removing the character:- " + str1);
+		System.out.print("String after removing the character:- " + newStr);
+		
 
 	}
 }

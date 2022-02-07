@@ -16,7 +16,7 @@ public class Largest_SmallestOfArrayElements {
 		int largest = arr[0], smallest = arr[0];
 		
 		//Finding largest and smallest element
-		for(int i=0;i<num;i++) {
+		for(int i=1;i<num;i++) {
 			if(arr[i]>arr[0]) {
 				largest=arr[i];
 				//return;

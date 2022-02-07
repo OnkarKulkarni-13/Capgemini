@@ -15,8 +15,8 @@ public class SortArray {
 		sc.close();
 		int t;
 		// Sort the array elements
-		for (int i = 0; i < 5; i++) {
-			for (int j = i + 1; j < 5; j++) {
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
 				if (arr[j] < arr[i]) {
 					t = arr[i];
 					arr[i] = arr[j];
@@ -31,3 +31,4 @@ public class SortArray {
 	}
 
 }
+// 12 34 21 45 32

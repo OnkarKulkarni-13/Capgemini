@@ -24,6 +24,8 @@ public class PalindromeOrNot {
 		System.out.println("Pallindrome String");
 	}
 }
+//121 -- 121, 1331--1331
+//abba - abba
 // StringBuffer str1 = new StringBuffer(str); ---->>>>>>
 // str1.reverse();
 
