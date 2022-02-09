@@ -11,8 +11,8 @@ class Student1 {
 	public Student1(int sId, String sname, int sclass) {
 		super();
 		this.sId = sId;
-		sName = sname;
-		sClass = sclass;
+		this.sClass = sclass;
+		this.sName = sname;
 	}
 
 	public int getsId() {
