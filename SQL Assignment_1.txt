@@ -1,0 +1,839 @@
+INSRTAssignment-1:-
+
+1. Table Name:- Employee
+------------------------------------------------
+
+postgres=# Insert Into Employee VALUES(101,'Isha','E-101',1234567890,'isha@gmail.com',105);
+INSERT 0 1
+postgres=# INSERT INTO Employee( Empid, EmpName, Department, ContactNo, EmilId, EmpHeadId)
+postgres-# VALUES(102,'Priya','E-104',1234567890,'priya@gmail.com',103);
+INSERT 0 1
+postgres=# Insert Into Employee VALUES(103,'Neha','E-101',1234567890,'neha@gmail.com',101);
+INSERT 0 1
+postgres=# Insert Into Employee VALUES(104,'Rahul','E-102',1234567890,'rahul@yahoo.com',105);
+INSERT 0 1
+postgres=# Insert Into Employee VALUES(105,'Abhishek','E-101',1234567890,'abhishek@gmail.com',102);
+INSERT 0 1
+postgres=# SELECT * FROM Employee;
+
+
+ empid | empname  | department | contactno  |       emilid       | empheadid
+-------+----------+------------+------------+--------------------+-----------
+   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105
+   102 | Priya    | E-104      | 1234567890 | priya@gmail.com    |       103
+   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101
+   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105
+   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102
+(5 rows)
+
+***************************************************************************
+
+2.Table :- EmpDept
+-------------------------------------------------------
+CREATE TABLE EmpDept(deptid varchar(50) primary key, deptname varchar(100), dept_off varchar(100), depthead int);
+CREATE TABLE
+
+ALTER TABLE EmpDept add foreign key (depthead) references Employee(empid);
+ALTER TABLE
+
+postgres=# INSERT INTO EmpDept VALUES ('E-101','HR','MONDAY',105);
+INSERT 0 1
+postgres=# INSERT INTO EmpDept VALUES ('E-102','Development','TUESDAY',101);
+INSERT 0 1
+postgres=# INSERT INTO EmpDept VALUES ('E-103','House Keeping','SATURDAY',103);
+INSERT 0 1
+postgres=# INSERT INTO EmpDept VALUES ('E-104','Sales','SUNDAY',104);
+INSERT 0 1
+postgres=# INSERT INTO EmpDept VALUES ('E-105','Purchage','TUEDAY',104);
+INSERT 0 1
+postgres=# SELECT * FROM EmpDept;
+ deptid |   deptname    | dept_off | depthead
+--------+---------------+----------+----------
+ E-101  | HR            | MONDAY   |      105
+ E-102  | Development   | TUESDAY  |      101
+ E-103  | House Keeping | SATURDAY |      103
+ E-104  | Sales         | SUNDAY   |      104
+ E-105  | Purchage      | TUEDAY   |      104
+(5 rows)
+
+*************************************************************************************************
+
+3.Table :- EmpSalary
+--------------------------------------------------------------
+
+ CREATE TABLE EmpSalary( Empid INTEGER REFERENCES Employee(empid), Salary BIGINT, IsPermanent VARCHAR(5));
+CREATE TABLE
+postgres=# INSERT INTO EmpSalary VALUES(101,2000,'YES');
+INSERT 0 1
+postgres=# INSERT INTO EmpSalary VALUES(102,10000,'YES');
+INSERT 0 1
+postgres=# INSERT INTO EmpSalary VALUES(104,5000,'NO');
+INSERT 0 1
+postgres=# INSERT INTO EmpSalary VALUES(104,1900,'YES');
+INSERT 0 1
+postgres=# INSERT INTO EmpSalary VALUES(105,2300,'YES');
+INSERT 0 1
+postgres=# UPDATE EmpSalary SET empid=103 WHERE IsPermanent = 'NO';
+UPDATE 1
+postgres=# SELECT * FROM EmpSalary;
+ empid | salary | ispermanent
+-------+--------+-------------
+   101 |   2000 | YES
+   102 |  10000 | YES
+   104 |   1900 | YES
+   105 |   2300 | YES
+   103 |   5000 | NO
+(5 rows)
+
+****************************************************************************************************************
+
+4.Table :- Project
+---------------------------------------------------------
+
+CREATE TABLE Project( ProjectId VARCHAR(10), Duration INT);
+CREATE TABLE
+postgres=# INSERT INTO Project VALUES('p-1',23);
+INSERT 0 1
+postgres=# INSERT INTO Project VALUES('p-2',15);
+INSERT 0 1
+postgres=# INSERT INTO Project VALUES('p-3',45);
+INSERT 0 1
+postgres=# INSERT INTO Project VALUES('p-4',2);
+INSERT 0 1
+postgres=# INSERT INTO Project VALUES('p-5',30);
+INSERT 0 1
+postgres=# SELECT * FROM Project;
+ projectid | duration
+-----------+----------
+ p-1       |       23
+ p-2       |       15
+ p-3       |       45
+ p-4       |        2
+ p-5       |       30
+(5 rows)
+
+*********************************************************************
+
+5. Table :- Country
+--------------------------------------------------------------
+
+CREATE TABLE Countary(cid VARCHAR(10) PRIMARY KEY, cname VARCHAR(50));
+CREATE TABLE
+postgres=# INSERT INTO Countary VALUES('c-1','India');
+INSERT 0 1
+postgres=# INSERT INTO Countary VALUES('c-2','USA');
+INSERT 0 1
+postgres=# INSERT INTO Countary VALUES('c-3','China');
+INSERT 0 1
+postgres=# INSERT INTO Countary VALUES('c-4','Pakistan');
+INSERT 0 1
+postgres=# INSERT INTO Countary VALUES('c-5','Russia');
+INSERT 0 1
+postgres=# SELECT * FROM Countary;
+ cid |  cname
+-----+----------
+ c-1 | India
+ c-2 | USA
+ c-3 | China
+ c-4 | Pakistan
+ c-5 | Russia
+(5 rows)
+
+***************************************************************************************
+
+6. Table :- ClientTable
+------------------------------------------------------------
+CREATE TABLE ClientTable(ClientId VARCHAR(50) PRIMARY KEY, ClientName VARCHAR(50), cid VARCHAR(50) REFERENCES   countary(cid));
+CREATE TABLE
+
+INSERT INTO ClientTable VALUES('cl-1','ABC Group', 'c-1');
+INSERT 0 1
+postgres=# INSERT INTO ClientTable VALUES('cl-2','PQR', 'c-2');
+INSERT 0 1
+postgres=# INSERT INTO ClientTable VALUES('cl-3','XYZ', 'c-2');
+INSERT 0 1
+postgres=# INSERT INTO ClientTable VALUES('cl-4','TECH ALTUM', 'c-3');
+INSERT 0 1
+postgres=# INSERT INTO ClientTable VALUES('cl-5','MNP', 'c-5');
+INSERT 0 1
+postgres=# SELECT * FROM ClientTable;
+ clientid | clientname | cid
+----------+------------+-----
+ cl-1     | ABC Group  | c-1
+ cl-2     | PQR        | c-2
+ cl-3     | XYZ        | c-2
+ cl-4     | TECH ALTUM | c-3
+ cl-5     | MNP        | c-5
+(5 rows)
+
+***********************************************************************************
+
+7. Table :- EmpProject
+---------------------------------------------------
+create table empproject(empid int references employee(empid), projectid varchar(50) references project(projectid), clientid varchar(50) references clienttable(clientid),startyear int, endyear int);
+CREATE TABLE
+
+ INSERT INTO EmpProject VALUES(101,'p-1','cl-1',2010,2010);
+INSERT 0 1
+postgres=# INSERT INTO EmpProject VALUES(102,'p-2','cl-2',2010,2012);
+INSERT 0 1
+postgres=# INSERT INTO EmpProject VALUES(103,'p-1','cl-3',2013);
+INSERT 0 1
+postgres=# INSERT INTO EmpProject VALUES(104,'p-4','cl-1',2014,2015);
+INSERT 0 1
+postgres=# INSERT INTO EmpProject VALUES(105,'p-4','cl-5',2015);
+INSERT 0 1
+postgres=# SELECT * FROM EmpProject;
+ empid | projectid | clientid | startyear | endyear
+-------+-----------+----------+-----------+---------
+   101 | p-1       | cl-1     |      2010 |    2010
+   102 | p-2       | cl-2     |      2010 |    2012
+   103 | p-1       | cl-3     |      2013 |
+   104 | p-4       | cl-1     |      2014 |    2015
+   105 | p-4       | cl-5     |      2015 |
+(5 rows)
+
+**************************************************************************************
+
+Simple Queries:-
+1. Select the detail of the employee whose name start with P.
+
+ SELECT * FROM Employee WHERE Empname like 'P%';
+ empid | empname | department | contactno  |     emilid      | empheadid
+-------+---------+------------+------------+-----------------+-----------
+   102 | Priya   | E-104      | 1234567890 | priya@gmail.com |       103
+(1 row)
+
+***************************************************************************************
+
+2.How many permanent candidate take salary more than 5000.
+
+  SELECT COUNT(salary) FROM EmpSalary WHERE ispermanent='YES' AND salary>5000;
+ count
+-------
+     1
+(1 row)
+
+*****************************************************************************************
+
+3.Select the detail of employee whose emailId is in gmail.
+
+ SELECT * FROM Employee WHERE emilid LIKE '%gmail.com';
+ empid | empname  | department | contactno  |       emilid       | empheadid
+-------+----------+------------+------------+--------------------+-----------
+   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105
+   102 | Priya    | E-104      | 1234567890 | priya@gmail.com    |       103
+   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101
+   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102
+(4 rows)
+
+*********************************************************************************************
+
+4.Select the details of the employee who work either for department E-104 or E-102.Sse
+
+ SELECT * FROM EmpDept WHERE DeptId='E-104' OR DeptId='E-102';
+ deptid |  deptname   | dept_off | depthead
+--------+-------------+----------+----------
+ E-102  | Development | TUESDAY  |      101
+ E-104  | Sales       | SUNDAY   |      104
+(2 rows)
+
+**********************************************************************************************
+
+5.What is the department name for DeptID E-102?
+
+  SELECT Deptname from EmpDept WHERE DeptId= 'E-102';
+  deptname
+-------------
+ Development
+(1 row)
+
+*********************************************************************************************
+
+6.What is total salarythat is paid to permanent employees?
+
+Select SUM(Salary) FROM EmpSalary WHERE Ispermanent='YES';
+  sum
+-------
+ 16200
+(1 row)
+
+**********************************************************************************************
+
+7.List name of all employees whose name ends with "a".
+
+ SELECT * FROM Employee WHERE Empname LIKE '%a';
+ empid | empname | department | contactno  |     emilid      | empheadid
+-------+---------+------------+------------+-----------------+-----------
+   101 | Isha    | E-101      | 1234567890 | isha@gmail.com  |       105
+   102 | Priya   | E-104      | 1234567890 | priya@gmail.com |       103
+   103 | Neha    | E-101      | 1234567890 | neha@gmail.com  |       101
+(3 rows)
+
+**********************************************************************************************
+
+8.List the number of department of employees in each project.
+SELECT count(empid) AS Employee,projectid FROM EmpProject GROUP BY projectid;
+ employee | projectid
+----------+-----------
+        2 | p-1
+        1 | p-2
+        2 | p-4
+(3 rows)
+
+**********************************************************************************************
+11.Select the name of the employee whose name's 3rd charactor is 'h'.
+
+ SELECT * FROM employee WHERE empname LIKE '__h%';
+ empid | empname  | department | contactno  |       emilid       | empheadid
+-------+----------+------------+------------+--------------------+-----------
+   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105
+   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101
+   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105
+   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102
+(4 rows)
+
+************************************************************************************************************************************************
+9.  How many project started in year 2010.
+
+select count(projectid) as project from empproject where startyear=2010;
+
+ project
+---------
+       2
+(1 row)
+
+*************************************************************************************************************************************************
+
+Nested Queries:- 
+---------------------------------------------------------------
+1.Select the department name of the company which is assigned to the employee 
+ whose employee id is grater 103.
+
+-> SELECT deptname FROM empdept WHERE deptid in (select department from employee where empid > 103);
+  deptname
+-------------
+ HR
+ Development
+(2 rows)
+
+*****************************************************************************************************************
+
+2)Select the name of the employee who is working inder Abhishek.
+
+-> select empname from employee where empheadid = (select empid from employee where empname = 'Abhishek');
+ empname
+---------
+ Isha
+ Rahul
+(2 rows)
+
+*****************************************************************************************************************
+
+
+3)Select the name of the employee who is department head of HR.
+ 
+-> select empname from employee where empid = (select depthead from empdept where deptname='HR');
+ empname
+----------
+ Abhishek
+(1 row)
+
+*************************************************************************************************************************
+
+4)Select the name of the employee head who is permanent.
+
+-> select empname from employee where empid in(select empheadid from employee) and empid in(select empid from empsalary where ispermanent= 'Yes');
+ empname
+----------
+ Isha
+ Priya
+ Abhishek
+(3 rows)
+
+**********************************************************************************************************************************************************************************************
+
+5)Select the name and email of the Dept head who is not permanent.
+
+-> select empname, emailid from employee where empid in(select depthead from empdept) and empid in(select empid from empsalary where ispermanent='No');
+ empname |    emailid
+---------+----------------
+ Neha    | neha@gmail.com
+(1 row)
+
+**********************************************************************************************************************************************************************************************
+
+6)Select the employee whose department odd id monday.
+
+-> select * from employee where department in(select deptid from empdept where dept_off='Monday');
+ empid | empname  | department | contactno  |      emailid       | empheadid
+-------+----------+------------+------------+--------------------+-----------
+   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105
+   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101
+   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102
+(3 rows)
+
+***********************************************************************************************************************************************************************************************
+
+7)Select the Indian clients details.
+
+-> select * from clienttable where cid in(select cid from country where cname='India');
+ clientid | clientname | cid
+----------+------------+-----
+ Cl-1     | ABC Group  | c-1
+ Cl-2     | PQR Group  | c-1
+(2 rows)
+
+
+***********************************************************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
