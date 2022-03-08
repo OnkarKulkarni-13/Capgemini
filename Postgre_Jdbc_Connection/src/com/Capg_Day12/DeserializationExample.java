@@ -1,0 +1,23 @@
+package com.Capg_Day12;
+
+import java.io.*;
+
+import com.Capg_Day12.*;
+
+public class DeserializationExample {
+
+	public static void main(String args[]) {
+		try {
+
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
+			Student s = (Student) in.readObject();
+
+			System.out.println(s.id + " " + s.name);
+
+			in.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
