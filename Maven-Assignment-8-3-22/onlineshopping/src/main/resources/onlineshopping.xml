@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user1" class="onlineshoppingproject.onlineshopping.User">
+		<constructor-arg type="java.lang.String"
+			value="Onkar Kulkarni" />
+		<constructor-arg type="java.lang.String"
+			value="onkarskulkarni09.58@gmail.com" />
+		<constructor-arg type="java.lang.String"
+			value="Pass123" />
+		<constructor-arg type="java.lang.String"
+			value="Shakuntal nagar" />
+		<constructor-arg type="java.lang.String"
+			value="Shakuntal nagar,mantha" />
+	</bean>
+
+	<bean id="user2" class="onlineshoppingproject.onlineshopping.User">
+		<constructor-arg type="java.lang.String"
+			value="Sarvesh Kulkarni" />
+		<constructor-arg type="java.lang.String"
+			value="sarvesh@gmail.com" />
+		<constructor-arg type="java.lang.String"
+			value="sarvesh123" />
+		<constructor-arg type="java.lang.String"
+			value="hadco,Aurangabad" />
+		<constructor-arg type="java.lang.String"
+			value="hadco,Aurangabad" />
+	</bean>
+
+	<bean id="user3" class="onlineshoppingproject.onlineshopping.User">
+		<constructor-arg type="java.lang.String"
+			value="Vyankatesh Kulkarni" />
+		<constructor-arg type="java.lang.String"
+			value="vyankatesh@gmail.com" />
+		<constructor-arg type="java.lang.String"
+			value="vyankatesh123" />
+		<constructor-arg type="java.lang.String"
+			value="Cidco,Aurangabad" />
+		<constructor-arg type="java.lang.String"
+			value="Cidco,Aurangabad" />
+	</bean>
+
+	<bean id="product1"
+		class="onlineshoppingproject.onlineshopping.Product">
+		<constructor-arg type="java.lang.String"
+			value="Realme-8i" />
+		<constructor-arg type="double" value="18000" />
+		<constructor-arg type="int" value="10" />
+		<constructor-arg type="java.lang.String"
+			value="C:\Users\Onkar Kulkarni\Pictures\Camera Roll\Myimage.jpg" />
+
+	</bean>
+
+	<bean id="product2"
+		class="onlineshoppingproject.onlineshopping.Product">
+		<constructor-arg type="java.lang.String"
+			value="Readme 10Pro" />
+		<constructor-arg type="double" value="22000" />
+		<constructor-arg type="int" value="7" />
+		<constructor-arg type="java.lang.String"
+			value="C:\Users\Onkar Kulkarni\Pictures\Camera Roll\Myimage.jpg" />
+
+	</bean>
+
+	<bean id="product3"
+		class="onlineshoppingproject.onlineshopping.Product">
+		<constructor-arg type="java.lang.String"
+			value="MSI-GF65" />
+		<constructor-arg type="double" value="64000" />
+		<constructor-arg type="int" value="18" />
+		<constructor-arg type="java.lang.String"
+			value="C:\Users\Onkar Kulkarni\Pictures\Camera Roll\Myimage.jpg" />
+
+	</bean>
+
+	<bean id="cart1" class="onlineshoppingproject.onlineshopping.Cart">
+		<property name="user" ref="user1"></property>
+		<property name="productList">
+			<list>
+				<ref bean="product1" />
+				<ref bean="product2" />
+				<ref bean="product3" />
+
+			</list>
+		</property>
+		<property name="total_amount" value="140000"></property>
+		<property name="status" value="true"></property>
+		<property name="confirmOrder" value="true"></property>
+	</bean>
+
+	<bean id="cart2" class="onlineshoppingproject.onlineshopping.Cart">
+		<property name="user" ref="user2"></property>
+		<property name="productList">
+			<list>
+				<ref bean="product1" />
+				<ref bean="product2" />
+				<ref bean="product3" />
+
+			</list>
+		</property>
+		<property name="total_amount" value="140000"></property>
+		<property name="status" value="true"></property>
+		<property name="confirmOrder" value="true"></property>
+	</bean>
+
+	<bean id="cart3" class="onlineshoppingproject.onlineshopping.Cart">
+		<property name="user" ref="user3"></property>
+		<property name="productList">
+			<list>
+				<ref bean="product1" />
+				<ref bean="product2" />
+				<ref bean="product3" />
+
+			</list>
+		</property>
+		<property name="total_amount" value="140000"></property>
+		<property name="status" value="true"></property>
+		<property name="confirmOrder" value="true"></property>
+	</bean>
+
+	<bean id="order" class="onlineshoppingproject.onlineshopping.Order">
+        <property name="cartList">
+        <list>
+        <ref bean="cart1"/>
+        <ref bean="cart2"/>
+        <ref bean="cart3"/>
+        </list>
+        </property>
+	</bean>
+
+</beans>
