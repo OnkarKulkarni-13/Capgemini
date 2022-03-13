@@ -5,7 +5,7 @@ public class User {
 	private String email;
 	private String password;
 	private String shipping_address;
-	
+	private String billing_address;
 	public User() {
 		
 	}

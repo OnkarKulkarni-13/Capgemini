@@ -18,7 +18,7 @@ public class App
        ApplicationContext context = new ClassPathXmlApplicationContext("onlineshopping.xml");
        System.out.println("---------------------------------------------------------------------------");
        
-       User user = context.getBean("user1",User.class);
+       User user = context.getBean("user2",User.class);
        System.out.println(user.getUsername());
        System.out.println(user.getEmail());
        System.out.println(user.getPassword());
@@ -27,7 +27,7 @@ public class App
        System.out.println("---------------------------------------------------------------------------");
        System.out.println();
        
-       Product product = context.getBean("product1",Product.class);
+       Product product = context.getBean("product3",Product.class);
        System.out.println(product.getProduct_name());
        System.out.println(product.getPrice());
        System.out.println(product.getQuantity_in_stock());
@@ -43,8 +43,8 @@ public class App
 		System.out.println(cart.getUser().getBiling_address());
 		System.out.println();
 		
-		List<Product> productList= cart.getProductList();
-		for(Product p: productList) {
+		//List<Product> productList= cart.getProductList();
+		for(Product p: cart.getProductList()) {
 			System.out.println(p.getProduct_name());
 			System.out.println(p.getPrice());
 			System.out.println(p.getQuantity_in_stock());
@@ -58,8 +58,8 @@ public class App
 		System.out.println("----------------------------------------------------------------------------");
 		
 		Order order = context.getBean("order", Order.class);
-		List<Cart> cartList = order.getCartList();
-		for (Cart c : cartList) {
+		//List<Cart> cartList = order.getCartList();
+		for (Cart c : order.getCartList()) {
 			System.out.println(c.getUser().getUsername());
 			System.out.println(c.getUser().getEmail());
 			System.out.println(c.getUser().getPassword());
